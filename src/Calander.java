@@ -20,7 +20,7 @@ public class Calander {
 
 	public static void main(String[] args) {
 
-		// 숫자를 입력받아 최대 일수를 출력하는 프로그램
+		// 숫자를 입력받아 최대 일수를 출력하는 프로그램/
 
 		Scanner scan = new Scanner(System.in);
 		Calander ca = new Calander();
