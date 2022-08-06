@@ -25,15 +25,27 @@ public class Calander {
 		Scanner scan = new Scanner(System.in);
 		Calander ca = new Calander();
 
-		System.out.println("반복횟수 입력");
-		int j = scan.nextInt();
+	//	System.out.println("반복횟수 입력");
+	//	int j = scan.nextInt();
 
-		for (int i = 0; i < j; i++) {
+	/*	for (int i = 0; i < j; i++) {
 			System.out.println("월을 입력하세요");
 			int month = scan.nextInt();
 			System.out.println(month+"월은" + ca.getmaxDayOfMonth(month - 1)+"까지 있습니다");
 		}
-
-		scan.close();
+*/
+		
+		while(true) {			
+			System.out.println("월을 입력하세요");	
+			int month = scan.nextInt();
+			if(month == -1) {
+				System.out.println("Have a nice day!");
+				scan.close();
+				return;
+			}else {
+				System.out.println(month+"월은" + ca.getmaxDayOfMonth(month - 1)+"까지 있습니다");
+			}
+				
+		}
 	}
 }
