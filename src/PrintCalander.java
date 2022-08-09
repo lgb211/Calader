@@ -3,58 +3,44 @@ import java.util.Scanner;
 public class PrintCalander {
 
 	private final static int[] MAX_DAYS = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-	private final static int[] LEAP_MAX_DAYS = {				};
-	public int getmaxDayOfMonth(int month) {
-		return MAX_DAYS[month];
+	private final static int[] LEAP_YEAR = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	
+	public static boolean leapYear(int year) {
+		if(year % 4 ==0 && (year %100 !=0 || year %400 == 0))
+		return true;
+		else
+		return false;
+		}
+	
+	public static int getmaxDayOfMonth(int year,int month) {
+		if(leapYear(year)) {
+			return LEAP_YEAR[month-1];
+		}else {
+			return MAX_DAYS[month-1];
+		}
 	}
 
-	public static void print(int year, int month) {//그레고리력 윤년
-		if (year % 4 == 0) {
-			if (year % 100 == 0 && year % 400 != 0) {
-				System.out.println(">");
-				System.out.printf("<%d년    %d월>", year, month);
-				System.out.println();
-				System.out.println(" 일  월   화   수   목   금  토");
-				System.out.println("--------------------");
-				for (int i = 1; i <= MAX_DAYS[month - 1]; i++) {
-					System.out.printf("%3d", i);
-					if (i % 7 == 0)
-						System.out.println();
-				}
-			} else {
-				System.out.println(">");
-				System.out.printf("<%d년    %d월>", year, month);
-				System.out.println();
-				System.out.println(" 일  월   화   수   목   금  토");
-				System.out.println("--------------------");
-				if (month == 2) {
-					for (int i = 1; i <= MAX_DAYS[month - 1] + 1; i++) {
-						System.out.printf("%3d", i);
-						if (i % 7 == 0)
-							System.out.println();
-					}
-				} else {
-					for (int i = 1; i <= MAX_DAYS[month - 1]; i++) {
-						System.out.printf("%3d", i);
-						if (i % 7 == 0)
-							System.out.println();
-					}
-				}
+	public static void print(int year,int month) {
+		int j = getmaxDayOfMonth(year,month);
+		System.out.println(j);
+		System.out.println(">");
+		System.out.println(" 일  월   화   수   목   금  토");
+		System.out.println("--------------------");
+		if(MAX_DAYS[month] !=0) {
+			for (int i = 1; i <= j; i++) {
+				System.out.printf("%3d", i);
+				if (i % 7 == 0)
+					System.out.println();
 			}
-		} else {
-			System.out.println(">");
-			System.out.printf("<%d년    %d월>", year, month);
-			System.out.println();
-			System.out.println(" 일  월   화   수   목   금  토");
-			System.out.println("--------------------");
-			for (int i = 1; i <= MAX_DAYS[month - 1]; i++) {
+		}else {
+			for (int i = 1; i <= j; i++) {
 				System.out.printf("%3d", i);
 				if (i % 7 == 0)
 					System.out.println();
 
 			}
 		}
-
+		
 	}
 
 	public static void main(String[] args) {
@@ -68,7 +54,7 @@ public class PrintCalander {
 				System.out.println("bye~");
 				break;
 			} else {
-				print(year, month);
+				print(year,month);
 				System.out.println();
 				System.out.println("년도를 입력하세요");
 				year = scan.nextInt();
@@ -76,7 +62,6 @@ public class PrintCalander {
 				month = scan.nextInt();
 			}
 		}
-		scan.close();
 	}
 
 }
