@@ -53,7 +53,7 @@ public class PrintCalander {
 		for(int n=1;n<m*3+1;n++) {
 			System.out.printf(" ");
 		}
-		if(MAX_DAYS[month] !=0) {
+		if(MAX_DAYS[month-1] !=0) {
 			for (int i = 1; i <= j; i++) {
 				System.out.printf("%3d", i);
 				if ((i+m) % 7 == 0)
@@ -78,8 +78,8 @@ public class PrintCalander {
 		System.out.println("월을 입력하세요");
 		int month = scan.nextInt();
 		System.out.println("시작 요일을 입력하세요");
-		System.out.println(" ");
-		String weekday = scan.next();
+		scan.nextLine();
+		String weekday = scan.nextLine();
 		while (true) {
 			if (month == -1) {
 				System.out.println("bye~");
@@ -92,8 +92,8 @@ public class PrintCalander {
 				System.out.println("월을 입력하세요");
 				month = scan.nextInt();
 				System.out.println("시작 요일을 입력하세요");
-				System.out.println(" ");
-				weekday = scan.next();
+				scan.nextLine();
+				weekday = scan.nextLine();
 			}
 		}
 		
